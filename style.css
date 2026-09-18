@@ -1,0 +1,53 @@
+:root {
+  --color-bg-dark: #0a0a0c;
+  --color-bg-card: #121216;
+  --color-gold-primary: #d4af37;
+  --color-gold-hover: #f3cf55;
+  --color-text-main: #f8fafc;
+  --color-text-muted: #94a3b8;
+  --color-white: #ffffff;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-main);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Scroll Reveal Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--transition-smooth), transform 0.8s var(--transition-smooth);
+  will-change: opacity, transform;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+
+/* Background Glow */
+.gold-glow {
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, rgba(10, 10, 12, 0) 70%);
+}
