@@ -1,11 +1,13 @@
 /* ==========================================================================
-   MSAUU METALLIC CHAMPAGNE-GOLD & WHITE STYLESHEET
-   Typography: Plus Jakarta Sans
+   MSAUU CINEMATIC DARK STYLESHEET
+   Reference Visual Inspiration: Doctors in Ministry
    ========================================================================== */
 
 :root {
   --font-jakarta: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --transition-gentle: cubic-bezier(0.16, 1, 0.3, 1);
+  --bg-dark: #070709;
+  --bg-card: #0c0c12;
+  --transition-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * {
@@ -17,39 +19,71 @@
 html {
   scroll-behavior: smooth;
   font-family: var(--font-jakarta);
+  background-color: var(--bg-dark);
 }
 
 body {
   font-family: var(--font-jakarta);
-  color: #0f172a;
-  background-color: #ffffff;
+  color: #f8fafc;
+  background-color: var(--bg-dark);
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
-/* Polished Metallic Champagne / Brushed Bronze Gold Accent */
+/* Polished Metallic Champagne & Brushed Gold Gradients */
 .text-gold-metallic {
-  background: linear-gradient(135deg, #b8860b 0%, #d4af37 35%, #aa7c11 70%, #8b6508 100%);
+  background: linear-gradient(135deg, #f3df8a 0%, #d4af37 40%, #aa7c11 75%, #8b6508 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .btn-gold-metallic {
-  background: linear-gradient(135deg, #d4af37 0%, #e6ca65 40%, #c59b27 100%);
+  background: linear-gradient(135deg, #d4af37 0%, #e6ca65 45%, #c59b27 100%);
   border: 1px solid #b8860b;
   color: #020617;
-  transition: all 0.3s ease;
+  transition: all 0.4s var(--transition-cinematic);
 }
 
 .btn-gold-metallic:hover {
   background: linear-gradient(135deg, #e6ca65 0%, #f3df8a 50%, #d4af37 100%);
-  box-shadow: 0 4px 15px rgba(184, 134, 11, 0.25);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.25);
+  transform: translateY(-2px);
 }
 
-/* Smooth, Slower Scroll Reveal Engine (0.8s - 1.1s Ease-Out) */
+.gold-ambient-glow {
+  background: radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.08) 0%, rgba(7, 7, 9, 0) 65%);
+}
+
+/* Navbar Link Hover Effect */
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 1px;
+  bottom: -4px;
+  left: 0;
+  background-color: #d4af37;
+  transition: width 0.3s var(--transition-cinematic);
+}
+
+.nav-link:hover {
+  color: #d4af37;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Smooth, Deliberate Scroll-Reveal Engine (1.0s - 1.2s Duration) */
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 1s var(--transition-gentle), transform 1s var(--transition-gentle);
+  transform: translateY(45px);
+  transition: opacity 1.1s var(--transition-cinematic), transform 1.1s var(--transition-cinematic);
   will-change: opacity, transform;
 }
 
@@ -58,8 +92,9 @@ body {
   transform: translateY(0);
 }
 
-/* Stagger Delays for Cards */
-.delay-1 { transition-delay: 0.1s; }
-.delay-2 { transition-delay: 0.22s; }
-.delay-3 { transition-delay: 0.34s; }
-.delay-4 { transition-delay: 0.46s; }
+/* Card Stagger Delays (120ms intervals) */
+.delay-1 { transition-delay: 0.12s; }
+.delay-2 { transition-delay: 0.24s; }
+.delay-3 { transition-delay: 0.36s; }
+.delay-4 { transition-delay: 0.48s; }
+.delay-5 { transition-delay: 0.60s; }
