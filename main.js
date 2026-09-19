@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   revealElements.forEach(el => revealObserver.observe(el));
 
-  // 2. Mobile Navigation Menu Toggle
+  // 2. Mobile Menu Toggle
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
 
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3. Dynamic Parallax Shrink & Diminish Effect on Hero Logo
+  // 3. Hero Logo Shrink Effect
   const heroLogo = document.getElementById('hero-logo');
 
   window.addEventListener('scroll', () => {
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 4. Sticky Navbar Styling
+  // 4. Sticky Navbar Effect
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
