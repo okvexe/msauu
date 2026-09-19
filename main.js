@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   revealElements.forEach(el => revealObserver.observe(el));
 
-  // 2. Mobile Menu Navigation Toggle
+  // 2. Mobile Navigation Menu Toggle
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
 
@@ -32,17 +32,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3. Dynamic Shrink & Diminish Effect on Hero Logo
+  // 3. Dynamic Parallax Shrink & Diminish Effect on Hero Logo
   const heroLogo = document.getElementById('hero-logo');
 
   window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
     
-    // As user scrolls from 0px to 400px down:
     if (heroLogo && scrollY < 500) {
-      const scaleValue = Math.max(0.7, 1 - scrollY * 0.0008); // Scale down from 1.0 to 0.7
-      const opacityValue = Math.max(0.3, 1 - scrollY * 0.0015); // Fade opacity slightly
-      const translateYValue = scrollY * 0.3; // Parallax push upward
+      const scaleValue = Math.max(0.7, 1 - scrollY * 0.0008);
+      const opacityValue = Math.max(0.2, 1 - scrollY * 0.0016);
+      const translateYValue = scrollY * 0.3;
 
       heroLogo.style.transform = `scale(${scaleValue}) translateY(-${translateYValue}px)`;
       heroLogo.style.opacity = opacityValue;
@@ -53,9 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
-      navbar.classList.add('bg-[#070709]/95', 'shadow-2xl');
+      navbar.classList.add('bg-black/95', 'shadow-2xl');
     } else {
-      navbar.classList.remove('bg-[#070709]/95', 'shadow-2xl');
+      navbar.classList.remove('bg-black/95', 'shadow-2xl');
     }
   });
 
