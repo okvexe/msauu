@@ -10,10 +10,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 
-  <!-- Tailwind CSS CDN for Layout Grid Utilities -->
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Custom Cinematic Dark Stylesheet -->
+  <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="style.css">
   
   <!-- Lucide Icons -->
@@ -27,7 +27,7 @@
       
       <!-- Brand Logo -->
       <a href="#" class="flex items-center space-x-4 group">
-        <img src="logo.jpg" alt="MSAUU Logo" class="h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-105">
+        <img src="logo.jpg" alt="MSAUU Crest Logo" class="h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-105">
       </a>
 
       <!-- Desktop Links -->
@@ -42,11 +42,11 @@
       <!-- Social Icons & CTA -->
       <div class="hidden md:flex items-center space-x-8">
         <div class="flex items-center space-x-5 border-r border-white/10 pr-8 text-slate-400">
-          <a href="https://www.instagram.com/msauuofficial" target="_blank" rel="noopener" aria-label="Instagram" class="hover:text-gold-champagne transition-colors duration-300">
-            <i data-lucide="instagram" class="w-4 h-4"></i>
+          <a href="https://www.instagram.com/msauuofficial" target="_blank" rel="noopener" aria-label="Instagram" class="hover:text-gold-champagne transition-colors duration-300 flex items-center justify-center p-2 rounded-full bg-white/5 hover:bg-white/10">
+            <i data-lucide="instagram" class="w-5 h-5 text-slate-200 hover:text-[#d4af37]"></i>
           </a>
-          <a href="https://www.linkedin.com/company/medical-students-association-of-uzima-university/" target="_blank" rel="noopener" aria-label="LinkedIn" class="hover:text-gold-champagne transition-colors duration-300">
-            <i data-lucide="linkedin" class="w-4 h-4"></i>
+          <a href="https://www.linkedin.com/company/medical-students-association-of-uzima-university/" target="_blank" rel="noopener" aria-label="LinkedIn" class="hover:text-gold-champagne transition-colors duration-300 flex items-center justify-center p-2 rounded-full bg-white/5 hover:bg-white/10">
+            <i data-lucide="linkedin" class="w-5 h-5 text-slate-200 hover:text-[#d4af37]"></i>
           </a>
         </div>
         <a href="#contact" class="btn-gold-metallic text-slate-950 font-bold px-7 py-3 text-xs uppercase tracking-wider rounded-sm transition-all duration-300 shadow-lg">
@@ -70,34 +70,33 @@
       <a href="#contact" class="block hover:text-gold-champagne transition-colors">Contact</a>
       <div class="pt-6 border-t border-white/10 flex items-center space-x-6 text-slate-400">
         <a href="https://www.instagram.com/msauuofficial" target="_blank" rel="noopener" class="hover:text-gold-champagne flex items-center space-x-2">
-          <i data-lucide="instagram" class="w-4 h-4"></i>
+          <i data-lucide="instagram" class="w-5 h-5"></i>
           <span>Instagram</span>
         </a>
         <a href="https://www.linkedin.com/company/medical-students-association-of-uzima-university/" target="_blank" rel="noopener" class="hover:text-gold-champagne flex items-center space-x-2">
-          <i data-lucide="linkedin" class="w-4 h-4"></i>
+          <i data-lucide="linkedin" class="w-5 h-5"></i>
           <span>LinkedIn</span>
         </a>
       </div>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="relative min-h-[85vh] flex items-center justify-center py-32 px-6 lg:px-12 gold-ambient-glow overflow-hidden">
-    <div class="max-w-6xl mx-auto text-center space-y-10 reveal">
+  <!-- Hero Section with Shrinking Logo Effect -->
+  <section class="relative min-h-[85vh] flex items-center justify-center py-20 px-6 lg:px-12 gold-ambient-glow overflow-hidden">
+    <div class="max-w-5xl mx-auto text-center space-y-12">
       
-      <!-- Dominant Headline -->
-      <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-white uppercase leading-[0.95] max-w-5xl mx-auto">
-        MEDICAL STUDENTS ASSOCIATION <br>
-        <span class="text-gold-metallic font-black">OF UZIMA UNIVERSITY</span>
-      </h1>
+      <!-- Prominent Full Hero Logo Image -->
+      <div class="hero-logo-wrapper flex justify-center items-center">
+        <img id="hero-logo" src="hero-logo.png" alt="Medical Students Association of Uzima University" class="w-full max-w-3xl h-auto object-contain transition-all duration-300 ease-out drop-shadow-2xl">
+      </div>
       
       <!-- Minimalist Supporting Statement -->
-      <p class="text-slate-400 text-lg sm:text-2xl font-light max-w-3xl mx-auto leading-relaxed tracking-wide">
+      <p class="text-slate-400 text-lg sm:text-2xl font-light max-w-3xl mx-auto leading-relaxed tracking-wide reveal">
         Empowering future healthcare professionals through education, research, leadership and service.
       </p>
 
       <!-- Action CTA Buttons -->
-      <div class="pt-8 flex flex-wrap justify-center gap-6">
+      <div class="pt-4 flex flex-wrap justify-center gap-6 reveal delay-2">
         <a href="#committees" class="btn-gold-metallic text-slate-950 font-bold px-9 py-4 rounded-sm text-xs uppercase tracking-widest shadow-2xl">
           Explore Committees
         </a>
@@ -118,41 +117,35 @@
     </div>
   </section>
 
-  <!-- Impact Section (Large Numbers & Generous Whitespace) -->
+  <!-- Impact Section -->
   <section id="impact" class="py-36 px-6 lg:px-12 relative border-b border-white/5">
     <div class="max-w-7xl mx-auto">
       
-      <!-- Section Header -->
       <div class="mb-24 reveal space-y-3">
         <span class="text-xs uppercase tracking-[0.3em] text-[#d4af37] font-semibold block">Proof of Impact</span>
         <h2 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight">QUANTIFIABLE LEADERSHIP</h2>
       </div>
 
-      <!-- 4 Impact Elements Grid -->
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
         
-        <!-- Element 1 -->
         <div class="reveal delay-1 border-t border-white/10 pt-8 space-y-3 hover:border-[#d4af37]/60 transition-colors duration-500">
           <div class="text-6xl sm:text-7xl font-black text-gold-metallic tracking-tighter">700+</div>
           <h3 class="text-base font-bold text-white tracking-wide">Current Medical Student Members</h3>
           <p class="text-slate-400 text-xs font-light leading-relaxed">A unified body of medical trainees at Uzima University.</p>
         </div>
 
-        <!-- Element 2 -->
         <div class="reveal delay-2 border-t border-white/10 pt-8 space-y-3 hover:border-[#d4af37]/60 transition-colors duration-500">
           <div class="text-6xl sm:text-7xl font-black text-gold-metallic tracking-tighter">20+</div>
           <h3 class="text-base font-bold text-white tracking-wide">Initiatives & Activities</h3>
           <p class="text-slate-400 text-xs font-light leading-relaxed">Academic symposia, research clubs, pad drives, and national summits.</p>
         </div>
 
-        <!-- Element 3 -->
         <div class="reveal delay-3 border-t border-white/10 pt-8 space-y-3 hover:border-[#d4af37]/60 transition-colors duration-500">
           <div class="text-6xl sm:text-7xl font-black text-gold-metallic tracking-tighter">7</div>
           <h3 class="text-base font-bold text-white tracking-wide">MSAKE Standing Committees</h3>
           <p class="text-slate-400 text-xs font-light leading-relaxed">Local divisions driving public health, SRHR, ethics, and research.</p>
         </div>
 
-        <!-- Element 4 -->
         <div class="reveal delay-4 border-t border-white/10 pt-8 space-y-3 hover:border-[#d4af37]/60 transition-colors duration-500">
           <div class="text-2xl sm:text-3xl font-extrabold text-gold-metallic leading-snug tracking-tight">Community Impact</div>
           <h3 class="text-base font-bold text-white tracking-wide">Through Health & Outreach Initiatives</h3>
@@ -163,7 +156,7 @@
     </div>
   </section>
 
-  <!-- About Section (Editorial Split Screen) -->
+  <!-- About Section -->
   <section id="about" class="py-36 px-6 lg:px-12 max-w-7xl mx-auto">
     <div class="grid lg:grid-cols-12 gap-16 items-start">
       
@@ -200,7 +193,7 @@
     </div>
   </section>
 
-  <!-- Numbered Core Pillars Section -->
+  <!-- Core Pillars Section -->
   <section id="pillars" class="py-36 px-6 lg:px-12 bg-[#0a0a0e] border-y border-white/5">
     <div class="max-w-7xl mx-auto space-y-20">
       
@@ -257,7 +250,6 @@
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         
-        <!-- SCOME -->
         <div class="reveal delay-1 bg-[#0c0c12] p-8 rounded-sm border border-white/5 hover:border-[#d4af37]/50 transition-all duration-500 flex flex-col justify-between group">
           <div class="space-y-4">
             <div class="flex items-center justify-between border-b border-white/5 pb-4">
@@ -273,7 +265,6 @@
           </div>
         </div>
 
-        <!-- SCOPH -->
         <div class="reveal delay-2 bg-[#0c0c12] p-8 rounded-sm border border-white/5 hover:border-[#d4af37]/50 transition-all duration-500 flex flex-col justify-between group">
           <div class="space-y-4">
             <div class="flex items-center justify-between border-b border-white/5 pb-4">
@@ -289,7 +280,6 @@
           </div>
         </div>
 
-        <!-- SCORA -->
         <div class="reveal delay-3 bg-[#0c0c12] p-8 rounded-sm border border-white/5 hover:border-[#d4af37]/50 transition-all duration-500 flex flex-col justify-between group">
           <div class="space-y-4">
             <div class="flex items-center justify-between border-b border-white/5 pb-4">
@@ -305,7 +295,6 @@
           </div>
         </div>
 
-        <!-- SCORP -->
         <div class="reveal delay-1 bg-[#0c0c12] p-8 rounded-sm border border-white/5 hover:border-[#d4af37]/50 transition-all duration-500 flex flex-col justify-between group">
           <div class="space-y-4">
             <div class="flex items-center justify-between border-b border-white/5 pb-4">
@@ -321,7 +310,6 @@
           </div>
         </div>
 
-        <!-- SCORE -->
         <div class="reveal delay-2 bg-[#0c0c12] p-8 rounded-sm border border-white/5 hover:border-[#d4af37]/50 transition-all duration-500 flex flex-col justify-between group">
           <div class="space-y-4">
             <div class="flex items-center justify-between border-b border-white/5 pb-4">
@@ -337,7 +325,6 @@
           </div>
         </div>
 
-        <!-- SCOPE -->
         <div class="reveal delay-3 bg-[#0c0c12] p-8 rounded-sm border border-white/5 hover:border-[#d4af37]/50 transition-all duration-500 flex flex-col justify-between group">
           <div class="space-y-4">
             <div class="flex items-center justify-between border-b border-white/5 pb-4">
@@ -353,7 +340,6 @@
           </div>
         </div>
 
-        <!-- SCOMH -->
         <div class="reveal delay-1 sm:col-span-2 lg:col-span-3 bg-[#0c0c12] p-10 rounded-sm border border-purple-900/30 hover:border-purple-500/50 transition-all duration-500 flex flex-col md:flex-row justify-between items-start md:items-center gap-8 group">
           <div class="space-y-3">
             <div class="flex items-center space-x-3">
@@ -385,42 +371,36 @@
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         
-        <!-- Pad Drive -->
         <div class="reveal delay-1 bg-[#070709] p-8 rounded-sm border border-white/5 space-y-4 hover:border-rose-500/30 transition-all duration-500">
           <span class="text-[10px] font-extrabold uppercase tracking-widest text-rose-400">Community Outreach</span>
           <h3 class="text-xl font-bold text-white">Menstrual Health & Pad Drive</h3>
           <p class="text-slate-400 text-xs font-light leading-relaxed">Collecting and distributing sanitary products, delivering menstrual education, and supporting schoolgirl retention around Kisumu.</p>
         </div>
 
-        <!-- AMR Minisymposium -->
         <div class="reveal delay-2 bg-[#070709] p-8 rounded-sm border border-white/5 space-y-4 hover:border-orange-500/30 transition-all duration-500">
           <span class="text-[10px] font-extrabold uppercase tracking-widest text-orange-400">Academic & Public Health</span>
           <h3 class="text-xl font-bold text-white">AMR Minisymposium</h3>
           <p class="text-slate-400 text-xs font-light leading-relaxed">Conducted at Uzima University, bringing together medical trainees and lab experts to address Antimicrobial Resistance and testing surveillance.</p>
         </div>
 
-        <!-- Research Club -->
         <div class="reveal delay-3 bg-[#070709] p-8 rounded-sm border border-white/5 space-y-4 hover:border-cyan-500/30 transition-all duration-500">
           <span class="text-[10px] font-extrabold uppercase tracking-widest text-cyan-400">Scientific Literacy</span>
           <h3 class="text-xl font-bold text-white">Uzima Medical Research Club</h3>
           <p class="text-slate-400 text-xs font-light leading-relaxed">Launched to cultivate undergraduate research skills, journal clubs, methodology workshops, and student scientific writing.</p>
         </div>
 
-        <!-- KMA Partnership -->
         <div class="reveal delay-1 bg-[#070709] p-8 rounded-sm border border-white/5 space-y-4 hover:border-[#d4af37]/30 transition-all duration-500">
           <span class="text-[10px] font-extrabold uppercase tracking-widest text-[#d4af37]">Professional Alliance</span>
           <h3 class="text-xl font-bold text-white">KMA Lab Coat Sponsorship</h3>
           <p class="text-slate-400 text-xs font-light leading-relaxed">Partnering with the Kenya Medical Association for student mentorship, professional lab coat sponsorship, and transition guidance.</p>
         </div>
 
-        <!-- MSAKE GA Host -->
         <div class="reveal delay-2 bg-[#070709] p-8 rounded-sm border border-white/5 space-y-4 hover:border-emerald-500/30 transition-all duration-500">
           <span class="text-[10px] font-extrabold uppercase tracking-widest text-emerald-400">National Leadership</span>
           <h3 class="text-xl font-bold text-white">MSAKE General Assembly Host</h3>
           <p class="text-slate-400 text-xs font-light leading-relaxed">Selected to host the MSAKE General Assembly (Feb 2026), convening national delegates for medical student policy and governance.</p>
         </div>
 
-        <!-- Graduation & Fun Day -->
         <div class="reveal delay-3 bg-[#070709] p-8 rounded-sm border border-white/5 space-y-4 hover:border-purple-500/30 transition-all duration-500">
           <span class="text-[10px] font-extrabold uppercase tracking-widest text-purple-400">Student Well-being</span>
           <h3 class="text-xl font-bold text-white">MBChB Class 2025 & Fun Days</h3>
@@ -476,14 +456,14 @@
         <p class="text-slate-500 text-xs mt-1 font-light">Uzima University, Kisumu, Kenya | Affiliated with MSAKE & IFMSA</p>
       </div>
 
-      <!-- Social Links -->
-      <div class="flex items-center space-x-8 text-slate-400">
-        <a href="https://www.instagram.com/msauuofficial" target="_blank" rel="noopener" aria-label="Instagram" class="hover:text-[#d4af37] transition-colors flex items-center space-x-2">
-          <i data-lucide="instagram" class="w-4 h-4"></i>
+      <!-- Social Links with Icons -->
+      <div class="flex items-center space-x-6 text-slate-400">
+        <a href="https://www.instagram.com/msauuofficial" target="_blank" rel="noopener" aria-label="Instagram" class="hover:text-[#d4af37] transition-colors flex items-center space-x-2 bg-white/5 px-4 py-2 rounded-full border border-white/5">
+          <i data-lucide="instagram" class="w-4 h-4 text-[#d4af37]"></i>
           <span class="text-xs">@msauuofficial</span>
         </a>
-        <a href="https://www.linkedin.com/company/medical-students-association-of-uzima-university/" target="_blank" rel="noopener" aria-label="LinkedIn" class="hover:text-[#d4af37] transition-colors flex items-center space-x-2">
-          <i data-lucide="linkedin" class="w-4 h-4"></i>
+        <a href="https://www.linkedin.com/company/medical-students-association-of-uzima-university/" target="_blank" rel="noopener" aria-label="LinkedIn" class="hover:text-[#d4af37] transition-colors flex items-center space-x-2 bg-white/5 px-4 py-2 rounded-full border border-white/5">
+          <i data-lucide="linkedin" class="w-4 h-4 text-[#d4af37]"></i>
           <span class="text-xs">LinkedIn</span>
         </a>
       </div>
