@@ -1,7 +1,5 @@
 /* ==========================================================================
-   MSAUU PURE OBSIDIAN BLACK & CHAMPAGNE-GOLD STYLESHEET
-   Primary Headings: Syne (Bold, Display, Editorial)
-   Body Text: Inter (Clean, Highly Readable)
+   MSAUU OBSIDIAN BLACK STYLESHEET
    ========================================================================== */
 
 :root {
@@ -31,12 +29,16 @@ body {
   overflow-x: hidden;
 }
 
-/* Headings Class helper */
 .font-syne {
   font-family: var(--font-syne);
 }
 
-/* Polished Metallic Champagne / Brushed Bronze Gold */
+/* Mix-blend helper to remove dark edges on images */
+.blend-screen {
+  mix-blend-mode: screen;
+}
+
+/* Polished Metallic Champagne Accent */
 .text-gold-metallic {
   background: linear-gradient(135deg, #f3df8a 0%, #d4af37 40%, #aa7c11 75%, #8b6508 100%);
   -webkit-background-clip: text;
@@ -60,7 +62,6 @@ body {
   background: radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.08) 0%, rgba(0, 0, 0, 0) 65%);
 }
 
-/* Navbar Link Hover Animation */
 .nav-link {
   position: relative;
   transition: color 0.3s ease;
@@ -85,7 +86,7 @@ body {
   width: 100%;
 }
 
-/* Smooth Scroll-Reveal Animations (1.0s - 1.2s Duration) */
+/* Scroll-Reveal Engine */
 .reveal {
   opacity: 0;
   transform: translateY(45px);
@@ -98,7 +99,6 @@ body {
   transform: translateY(0);
 }
 
-/* Card Stagger Delays */
 .delay-1 { transition-delay: 0.12s; }
 .delay-2 { transition-delay: 0.24s; }
 .delay-3 { transition-delay: 0.36s; }
