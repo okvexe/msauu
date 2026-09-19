@@ -1,12 +1,13 @@
 /* ==========================================================================
-   MSAUU CINEMATIC DARK STYLESHEET
-   Reference Visual Inspiration: Doctors in Ministry
+   MSAUU PURE OBSIDIAN BLACK & CHAMPAGNE-GOLD STYLESHEET
+   Primary Headings: Syne (Bold, Display, Editorial)
+   Body Text: Inter (Clean, Highly Readable)
    ========================================================================== */
 
 :root {
-  --font-jakarta: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --bg-dark: #070709;
-  --bg-card: #0c0c12;
+  --font-syne: 'Syne', system-ui, -apple-system, sans-serif;
+  --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
+  --bg-pure-black: #000000;
   --transition-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -18,19 +19,24 @@
 
 html {
   scroll-behavior: smooth;
-  font-family: var(--font-jakarta);
-  background-color: var(--bg-dark);
+  font-family: var(--font-inter);
+  background-color: var(--bg-pure-black);
 }
 
 body {
-  font-family: var(--font-jakarta);
+  font-family: var(--font-inter);
   color: #f8fafc;
-  background-color: var(--bg-dark);
+  background-color: var(--bg-pure-black);
   line-height: 1.6;
   overflow-x: hidden;
 }
 
-/* Polished Metallic Champagne & Brushed Gold Gradients */
+/* Headings Class helper */
+.font-syne {
+  font-family: var(--font-syne);
+}
+
+/* Polished Metallic Champagne / Brushed Bronze Gold */
 .text-gold-metallic {
   background: linear-gradient(135deg, #f3df8a 0%, #d4af37 40%, #aa7c11 75%, #8b6508 100%);
   -webkit-background-clip: text;
@@ -51,10 +57,10 @@ body {
 }
 
 .gold-ambient-glow {
-  background: radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.08) 0%, rgba(7, 7, 9, 0) 65%);
+  background: radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.08) 0%, rgba(0, 0, 0, 0) 65%);
 }
 
-/* Navbar Link Hover Effect */
+/* Navbar Link Hover Animation */
 .nav-link {
   position: relative;
   transition: color 0.3s ease;
@@ -79,7 +85,7 @@ body {
   width: 100%;
 }
 
-/* Smooth, Deliberate Scroll-Reveal Engine (1.0s - 1.2s Duration) */
+/* Smooth Scroll-Reveal Animations (1.0s - 1.2s Duration) */
 .reveal {
   opacity: 0;
   transform: translateY(45px);
@@ -92,7 +98,7 @@ body {
   transform: translateY(0);
 }
 
-/* Card Stagger Delays (120ms intervals) */
+/* Card Stagger Delays */
 .delay-1 { transition-delay: 0.12s; }
 .delay-2 { transition-delay: 0.24s; }
 .delay-3 { transition-delay: 0.36s; }
