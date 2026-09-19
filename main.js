@@ -4,19 +4,19 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   
-  // 1. Smooth Intersection Observer with Early Viewport Trigger
+  // 1. Smooth Intersection Observer
   const revealElements = document.querySelectorAll('.reveal');
 
   const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('active');
-        observer.unobserve(entry.target); // Unobserve after trigger to optimize memory
+        observer.unobserve(entry.target);
       }
     });
   }, {
     root: null,
-    threshold: 0.08, // Trigger early as the user approaches
+    threshold: 0.08,
     rootMargin: '0px 0px -80px 0px'
   });
 
@@ -32,13 +32,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3. Dynamic Sticky Navbar Effect on Scroll
+  // 3. Dynamic Shrink & Diminish Effect on Hero Logo
+  const heroLogo = document.getElementById('hero-logo');
+
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    
+    // As user scrolls from 0px to 400px down:
+    if (heroLogo && scrollY < 500) {
+      const scaleValue = Math.max(0.7, 1 - scrollY * 0.0008); // Scale down from 1.0 to 0.7
+      const opacityValue = Math.max(0.3, 1 - scrollY * 0.0015); // Fade opacity slightly
+      const translateYValue = scrollY * 0.3; // Parallax push upward
+
+      heroLogo.style.transform = `scale(${scaleValue}) translateY(-${translateYValue}px)`;
+      heroLogo.style.opacity = opacityValue;
+    }
+  });
+
+  // 4. Sticky Navbar Styling
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
-      navbar.classList.add('bg-[#070709]/95', 'shadow-2xl', 'py-1');
+      navbar.classList.add('bg-[#070709]/95', 'shadow-2xl');
     } else {
-      navbar.classList.remove('bg-[#070709]/95', 'shadow-2xl', 'py-1');
+      navbar.classList.remove('bg-[#070709]/95', 'shadow-2xl');
     }
   });
 
