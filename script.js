@@ -110,3 +110,129 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
   els.forEach(function (el) { io.observe(el); });
 })();
+
+/* gallery: a slow, endless drift. Swipe, drag or scroll sideways to move it yourself. */
+(function () {
+  var stage = document.getElementById('gStage');
+  var track = document.getElementById('gTrack');
+  if (!stage || !track) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var SPEED = 30;          /* pixels per second: slow enough to take each photo in */
+  var RESUME_AFTER = 1800; /* ms of rest after a touch, drag or arrow tap */
+
+  /* a second copy of the photos makes the loop seamless */
+  var originals = Array.prototype.slice.call(track.children);
+  originals.forEach(function (el) {
+    var c = el.cloneNode(true);
+    c.setAttribute('aria-hidden', 'true');
+    c.removeAttribute('role'); c.removeAttribute('aria-roledescription'); c.removeAttribute('aria-label');
+    var img = c.querySelector('img'); if (img) img.setAttribute('alt', '');
+    track.appendChild(c);
+  });
+
+  var setW = 0, padLeft = 0, step = 0, pos = 0;
+  function measure() {
+    var kids = track.children, n = originals.length;
+    setW = kids[n].offsetLeft - kids[0].offsetLeft;
+    step = setW / n;
+    var wrap = document.querySelector('.wrap');
+    padLeft = wrap ? wrap.getBoundingClientRect().left + (parseFloat(getComputedStyle(wrap).paddingLeft) || 0) : 24;
+  }
+  function normalize() {
+    var lo = -padLeft, hi = setW - padLeft;
+    while (pos >= hi) pos -= setW;
+    while (pos < lo) pos += setW;
+  }
+  function apply() { track.style.transform = 'translate3d(' + (-pos) + 'px,0,0)'; }
+
+  measure();
+  pos = -padLeft;   /* the first photo starts level with the headings */
+  apply();
+
+  var dragging = false, vel = 0, tween = null, resumeAt = 0;
+  var hovering = false, keyFocus = false, inView = false;
+  var raf = 0, last = 0;
+
+  function ease(p) { return p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2; }
+
+  function nudge(dir) {
+    normalize();
+    if (dir < 0 && pos - step < -padLeft) pos += setW;
+    tween = { from: pos, to: pos + dir * step, t0: performance.now(), d: 650 };
+    vel = 0;
+  }
+
+  function frame(t) {
+    raf = requestAnimationFrame(frame);
+    var dt = Math.min(0.05, Math.max(0, (t - last) / 1000)); last = t;
+    if (tween) {
+      var p = (t - tween.t0) / tween.d;
+      if (p >= 1) { pos = tween.to; tween = null; resumeAt = t + RESUME_AFTER; normalize(); }
+      else { pos = tween.from + (tween.to - tween.from) * ease(p); }
+    } else if (!dragging) {
+      if (vel) { pos += vel * dt; vel *= Math.exp(-dt * 3.5); if (Math.abs(vel) < 1) vel = 0; }
+      if (!reduce && !hovering && !keyFocus && t >= resumeAt) pos += SPEED * dt;
+      normalize();
+    } else { normalize(); }
+    apply();
+  }
+  function start() { if (!raf) { last = performance.now(); raf = requestAnimationFrame(frame); } }
+  function stop() { if (raf) { cancelAnimationFrame(raf); raf = 0; } }
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      inView = entries[0].isIntersecting; if (inView) start(); else stop();
+    }, { threshold: 0.05 }).observe(stage);
+  } else { start(); }
+
+  /* drag or swipe */
+  var lastX = 0, lastT = 0;
+  stage.addEventListener('pointerdown', function (e) {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    dragging = true; tween = null; vel = 0;
+    lastX = e.clientX; lastT = e.timeStamp;
+    stage.classList.add('dragging');
+    try { stage.setPointerCapture(e.pointerId); } catch (err) {}
+  });
+  stage.addEventListener('pointermove', function (e) {
+    if (!dragging) return;
+    var dx = e.clientX - lastX, dts = (e.timeStamp - lastT) / 1000;
+    pos -= dx;
+    if (dts > 0) vel = 0.6 * vel + 0.4 * (-dx / dts);
+    lastX = e.clientX; lastT = e.timeStamp;
+  });
+  function release() {
+    if (!dragging) return;
+    dragging = false; stage.classList.remove('dragging');
+    vel = Math.max(-1600, Math.min(1600, vel));
+    resumeAt = performance.now() + RESUME_AFTER;
+  }
+  stage.addEventListener('pointerup', release);
+  stage.addEventListener('pointercancel', release);
+
+  /* rest while a mouse is over the gallery or the keyboard is using it */
+  stage.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') hovering = true; });
+  stage.addEventListener('pointerleave', function () { hovering = false; });
+  stage.addEventListener('focusin', function (e) { keyFocus = !!(e.target.matches && e.target.matches(':focus-visible')); });
+  stage.addEventListener('focusout', function () { keyFocus = false; });
+  stage.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') { e.preventDefault(); nudge(1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); nudge(-1); }
+  });
+
+  /* sideways scroll (trackpad, or shift + mouse wheel) moves the gallery too */
+  stage.addEventListener('wheel', function (e) {
+    var dx = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : (e.shiftKey ? e.deltaY : 0);
+    if (!dx) return;
+    e.preventDefault();
+    tween = null; vel = 0;
+    pos += dx;
+    resumeAt = performance.now() + RESUME_AFTER;
+  }, { passive: false });
+
+  var rt;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () { measure(); normalize(); apply(); }, 120);
+  });
+})();

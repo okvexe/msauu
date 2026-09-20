@@ -7,6 +7,7 @@
     --gold-deep: #8a6a30;
     --gold-ink: #1a1405;
     --line: #26211a;
+    --ring: #4a4232;
     /* metallic gradients built from the logo's own gold tones */
     --metal-text: linear-gradient(180deg, #f6e7a4 0%, #d9bd68 38%, #a98a40 62%, #e6cf7f 100%);
     --metal-fill: linear-gradient(135deg, #f3e4a0 0%, #cdb062 35%, #a98a40 68%, #d9bf6c 100%);
@@ -17,7 +18,7 @@
     --ease: cubic-bezier(.2,.6,.2,1);
     color-scheme: dark;
   }
-  /* white region: from Mission to the end of Initiatives */
+  /* white region: About (Mission, Vision, Collaboration) and Initiatives */
   .light {
     --bg: #faf7f0; --ink: #17130b; --muted: #5d5645; --line: #e4dcc9;
     --gold: #7a5c24; --gold-hi: #6a4e1c; --ring: #d2c8b1;
@@ -119,6 +120,31 @@
   .cmte-body strong { color: var(--gold-hi); font-weight: 500; }
   .cmte-body .cmte-office { color: var(--muted); font-size: 14px; }
 
+
+  /* ---------- gallery: slow, continuous slideshow on obsidian ---------- */
+  section.block.gallery { background: var(--bg); padding-bottom: 0; }
+  section.block.committees { padding-bottom: 96px; }
+  .g-stage { position: relative; margin-top: 40px; overflow-x: auto; scrollbar-width: none; }
+  .g-stage::-webkit-scrollbar { display: none; }
+  .js .g-stage { overflow: hidden; touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; }
+  .js .g-stage.dragging { cursor: grabbing; }
+  .g-stage:focus-visible { outline-offset: -3px; }
+  .g-track { display: flex; align-items: flex-start; gap: 16px; width: max-content; will-change: transform; } /* tops line up on one line */
+  .g-slide { flex: 0 0 min(78vw, 380px); margin: 0; background: var(--bg); border-radius: 6px; overflow: hidden; }
+  .g-photo { overflow: hidden; }
+  .g-photo img { display: block; width: 100%; height: auto; pointer-events: none; -webkit-user-drag: none; }
+  /* the caption slides up over the bottom of the photo, which fades into the black */
+  .g-cap { position: relative; margin: calc(var(--fade) * -1) 0 0; }
+  .g-fade {
+    display: block; padding-top: var(--fade);
+    background: linear-gradient(to bottom,
+      rgba(10,10,10,0) 0%, rgba(10,10,10,.18) 20%, rgba(10,10,10,.45) 40%,
+      rgba(10,10,10,.72) 60%, rgba(10,10,10,.92) 80%, var(--bg) 100%);
+  }
+  .g-txt { background: var(--bg); padding: 0 22px 26px; }
+  .g-txt h3 { font-size: 23px; font-weight: 600; line-height: 1.15; margin-bottom: 8px; color: #d9bd68; background: var(--metal-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .g-txt p { max-width: 34ch; font-size: 15px; line-height: 1.55; color: #c4bba6; }
+
   /* ---------- footer ---------- */
   footer { background: #0a0a0a; color: #f4efe4; padding: 52px 0 28px; }
   .f-grid { display: grid; gap: 34px; }
@@ -141,6 +167,8 @@
   .f-bottom { margin-top: 36px; padding-top: 22px; border-top: 1px solid #1c1a15; display: flex; flex-direction: column; gap: 8px; }
   .copy { color: #7d7666; font-size: 13px; line-height: 1.5; }
   .credit { color: #2f2c25; font-size: 11px; letter-spacing: .02em; line-height: 1.5; }
+  .credit a { color: inherit; text-decoration: none; transition: color .3s ease; }
+  .credit a:hover, .credit a:focus-visible { color: #6b6553; }
 
   @media (min-width: 560px) {
     .cmte-name { font-size: 21px; }
@@ -166,6 +194,10 @@
     .f-col ul.inline li { padding-left: 0; }
     .f-col ul.inline li::before { content: none; }
     .f-bottom { flex-direction: row; justify-content: space-between; align-items: center; }
+    .g-stage { margin-top: 56px; }
+    .g-track { gap: 20px; }
+    .g-slide { flex-basis: 380px; }
+    .g-txt h3 { font-size: 26px; }
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
