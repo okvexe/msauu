@@ -236,3 +236,21 @@
     rt = setTimeout(function () { measure(); normalize(); apply(); }, 120);
   });
 })();
+
+/* committees drop-down: tap the heading to open or close the list */
+(function () {
+  var btn = document.getElementById('cmToggle');
+  var drop = document.getElementById('cmDrop');
+  if (!btn || !drop) return;
+  function set(open) {
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    drop.classList.toggle('open', open);
+  }
+  btn.addEventListener('click', function () { set(btn.getAttribute('aria-expanded') !== 'true'); });
+  /* menu and footer links to Committees open it too */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href="#committees"]');
+    if (a) set(true);
+  });
+  if (location.hash === '#committees') set(true);
+})();

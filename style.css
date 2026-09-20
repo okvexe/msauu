@@ -145,6 +145,22 @@
   .g-txt h3 { font-size: 23px; font-weight: 600; line-height: 1.15; margin-bottom: 8px; color: #d9bd68; background: var(--metal-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
   .g-txt p { max-width: 34ch; font-size: 15px; line-height: 1.55; color: #c4bba6; }
 
+
+  /* ---------- committees: the whole section is a drop-down ---------- */
+  .cm-h { margin: 0; }
+  .cm-toggle { all: unset; box-sizing: border-box; width: 100%; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 24px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .cm-toggle:focus-visible { outline: 3px solid var(--gold-hi); outline-offset: 2px; border-radius: 6px; }
+  .cm-chev { flex: none; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--ring); position: relative; transition: border-color .25s, background-color .25s; }
+  .cm-chev::before { content: ""; position: absolute; left: 50%; top: 50%; width: 9px; height: 9px; border-right: 1.8px solid var(--ink); border-bottom: 1.8px solid var(--ink); transform: translate(-50%, -70%) rotate(45deg); transition: transform .3s ease; }
+  .cm-toggle:hover .cm-chev { border-color: var(--ink); }
+  .cm-toggle[aria-expanded="true"] .cm-chev { border-color: var(--ink); background: var(--ink); }
+  .cm-toggle[aria-expanded="true"] .cm-chev::before { border-color: var(--bg); transform: translate(-50%, -30%) rotate(225deg); }
+  .cm-drop { display: grid; grid-template-rows: 0fr; visibility: hidden; transition: grid-template-rows .5s ease, visibility 0s linear .5s; }
+  .cm-drop.open { grid-template-rows: 1fr; visibility: visible; transition-delay: 0s; }
+  .cm-drop-clip { overflow: hidden; min-height: 0; }
+  .cm-drop .cm-list { margin-top: 0; }
+  .cm-drop .cmte:first-child { border-top: 0; }
+
   /* ---------- footer ---------- */
   footer { background: #0a0a0a; color: #f4efe4; padding: 52px 0 28px; }
   .f-grid { display: grid; gap: 34px; }
@@ -188,7 +204,7 @@
     .about-grid { grid-template-columns: repeat(3, 1fr); gap: 48px; margin-top: 0; }
     .cards { grid-template-columns: repeat(3, 1fr); gap: 0 48px; margin-top: 56px; }
     .card, .card:last-child { border-bottom: 0; padding: 28px 0 40px; }
-    .cm-list { max-width: 800px; }
+    .cm-list, .cm-h { max-width: 800px; }
     .f-grid { grid-template-columns: 1.4fr 1fr 1.4fr 1.2fr; gap: 56px; align-items: start; }
     .f-col ul.inline { flex-direction: column; align-items: flex-start; margin-left: 0; }
     .f-col ul.inline li { padding-left: 0; }
