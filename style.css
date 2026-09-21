@@ -220,3 +220,58 @@
     * { transition: none !important; animation: none !important; }
     .js .reveal { opacity: 1; transform: none; }
   }
+
+
+  /* ================= preview additions ================= */
+  /* header: wraps so the dropdown menu opens below the bar instead of beside it */
+  .bar { flex-wrap: wrap; height: auto; min-height: var(--header-h); }
+  .brand, .menu-btn { height: var(--header-h); }
+  .menu-btn { margin-left: auto; }
+  .nav { flex: 0 0 100%; order: 10; }
+  @media (min-width: 860px) and (max-width: 999px) {
+    .menu-btn { display: inline-flex; }
+    .nav { display: none !important; padding: 4px 0 16px; gap: 0; }
+    .nav.open { display: block !important; }
+    .nav a { border-top: 1px solid var(--line); padding: 14px 0; font-size: inherit; }
+  }
+  @media (min-width: 1000px) {
+    .bar { flex-wrap: nowrap; height: var(--header-h); }
+    .nav { flex: 0 1 auto; order: 0; gap: 26px; }
+  }
+
+  /* stacked drop-down strips under Standing Committees */
+  section.block.committees { padding-bottom: 0; }
+  section.block.strip { padding-top: 0; padding-bottom: 0; }
+  section.block.strip.last { padding-bottom: 96px; }
+  .strip .cm-toggle { border-top: 0; }
+  .strip-body { padding: 30px 0 44px; }
+  .strip-body .eyebrow { margin-bottom: 4px; }
+
+  /* events: empty state */
+  .ev-empty { padding: 44px 0 52px; text-align: center; }
+  .ev-cal { width: 64px; height: 64px; margin: 0 auto 18px; display: block; }
+  .ev-empty h3 { font-size: 22px; font-weight: 600; margin-bottom: 10px; }
+  .ev-empty p { color: var(--muted); max-width: 27em; margin: 0 auto; }
+  .ev-empty a { color: var(--gold); text-underline-offset: 3px; }
+
+  /* leadership */
+  .leaders { margin-top: 18px; display: grid; grid-template-columns: 1fr; border-bottom: 1px solid var(--line); }
+  .leader { border-top: 1px solid var(--line); padding: 22px 0; }
+  .leader .role { font: 600 12px/1.4 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .leader h3 { font-size: 23px; font-weight: 600; }
+  .leader .bio { margin-top: 10px; max-width: 34em; color: var(--muted); font-size: 15px; line-height: 1.6; }
+  .leader.patron { grid-column: 1 / -1; }
+  @media (min-width: 560px) { .leaders { grid-template-columns: repeat(2, 1fr); gap: 0 40px; } }
+
+  /* support / donate */
+  .don-lead { max-width: 34em; color: #c4bba6; }
+  .don-card { margin-top: 26px; max-width: 620px; background: linear-gradient(180deg, #13110b, #0d0c08); border: 1px solid #2b2417; border-radius: 12px; padding: 6px 24px; }
+  .don-row { padding: 20px 0; border-top: 1px solid var(--line); }
+  .don-row:first-child { border-top: 0; }
+  .don-k { font: 600 12px/1.4 var(--body); letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+  .don-v { font-size: 18px; line-height: 1.4; color: var(--ink); }
+  .don-acc { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .don-num { font-family: var(--head); font-weight: 700; font-size: 30px; letter-spacing: .04em; font-feature-settings: "lnum" 1; background: var(--metal-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; user-select: all; -webkit-user-select: all; }
+  .don-copy { flex: none; font: 600 13px/1 var(--body); color: var(--gold-hi); background: transparent; border: 1px solid var(--ring); border-radius: 999px; padding: 10px 16px; cursor: pointer; transition: border-color .2s, color .2s, background-color .2s; }
+  .don-copy:hover { border-color: var(--gold); }
+  .don-copy.done { color: var(--gold-ink); background: var(--metal-fill); border-color: transparent; }

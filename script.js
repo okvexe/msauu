@@ -254,3 +254,50 @@
   });
   if (location.hash === '#committees') set(true);
 })();
+
+
+/* events, leadership and support drop-downs (same behaviour as Standing Committees) */
+(function () {
+  [['evToggle', 'evDrop', '#events'], ['ldToggle', 'ldDrop', '#leadership'], ['spToggle', 'spDrop', '#donate']].forEach(function (p) {
+    var btn = document.getElementById(p[0]);
+    var drop = document.getElementById(p[1]);
+    if (!btn || !drop) return;
+    function set(open) {
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      drop.classList.toggle('open', open);
+    }
+    btn.addEventListener('click', function () { set(btn.getAttribute('aria-expanded') !== 'true'); });
+    /* menu and footer links open it too */
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href="' + p[2] + '"]');
+      if (a) set(true);
+    });
+    if (location.hash === p[2]) set(true);
+  });
+})();
+
+/* support: tap to copy the account number */
+(function () {
+  var btn = document.getElementById('copyAcc');
+  var num = document.getElementById('accNum');
+  if (!btn || !num) return;
+  function done() {
+    btn.textContent = 'Copied'; btn.classList.add('done');
+    setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('done'); }, 1800);
+  }
+  function fallback() {
+    try {
+      var r = document.createRange(); r.selectNodeContents(num);
+      var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+      if (document.execCommand('copy')) { done(); return; }
+    } catch (e) {}
+    btn.textContent = 'Press and hold to copy';
+    setTimeout(function () { btn.textContent = 'Copy'; }, 2600);
+  }
+  btn.addEventListener('click', function () {
+    var text = num.textContent.trim();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } else { fallback(); }
+  });
+})();
